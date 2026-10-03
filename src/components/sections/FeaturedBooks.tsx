@@ -7,7 +7,7 @@ import { getTitles } from "../../lib/title";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
-const SHELF_SIZE = 6;
+const SHELF_SIZE = 8;
 const ROTATE_MS = 9000;
 
 function coverUrl(path: string | null) {
