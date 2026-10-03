@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Book } from "../../schemas/book";
+import { useUIStore } from "../../stores/uiStore";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -33,6 +34,7 @@ export default function BookShelf({ books }: { books: Book[] }) {
 function ShelfRow({ books }: { books: Book[] }) {
   const [hovered, setHovered] = useState<string | null>(null);
   const hoveredBook = books.find((b) => b.id === hovered) ?? null;
+  const lang = useUIStore((s) => s.lang);
 
   return (
     <div className="relative bg-well rounded-sm px-6 pt-8 pb-0">
@@ -43,6 +45,7 @@ function ShelfRow({ books }: { books: Book[] }) {
             <Spine
               key={book.id}
               book={book}
+              lang={lang}
               isHovered={hovered === book.id}
               onHover={() => setHovered(book.id)}
               onLeave={() => setHovered(null)}
@@ -93,11 +96,13 @@ function ShelfRow({ books }: { books: Book[] }) {
 
 function Spine({
   book,
+  lang,
   isHovered,
   onHover,
   onLeave,
 }: {
   book: Book;
+  lang: "en" | "fa";
   isHovered: boolean;
   onHover: () => void;
   onLeave: () => void;
@@ -133,7 +138,9 @@ function Spine({
           }}
         >
           <span className="font-serif text-paper text-[13px] tracking-[0.2em] uppercase px-4 text-center">
-            {book.title}
+            {lang === "fa"
+              ? book.title_fa || book.title
+              : book.title || book.title_fa}
           </span>
         </div>
 

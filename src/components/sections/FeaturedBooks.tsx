@@ -175,7 +175,7 @@ function MiniSpine({
 }) {
   const color = book.spine_color ?? "#6E2639";
   const displayTitle =
-    lang === "fa" && book.title_fa ? book.title_fa : book.title;
+    lang === "fa" ? book.title_fa || book.title : book.title || book.title_fa;
 
   return (
     <Link to={`/books/${book.slug}`} className="shrink-0">
