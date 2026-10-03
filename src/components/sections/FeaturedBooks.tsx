@@ -66,7 +66,7 @@ export default function FeaturedBooks({ books }: { books: Book[] }) {
     <div className="grid grid-cols-1 md:grid-cols-[380px_280px_1fr] gap-10 md:gap-12 items-start">
       {/* 1) Shelf */}
       <div className="md:pt-24">
-        <div className="flex items-end gap-2 md:gap-4 pb-3 min-h-48 md:min-h-60 overflow-x-auto [scrollbar-none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex items-end justify-center md:justify-start gap-2 md:gap-4 pb-3 min-h-48 md:min-h-60 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {orderedSpines.map((book) => (
             <MiniSpine
               key={book.id}
