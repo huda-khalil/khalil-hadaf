@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "Home",
+    "books": "Books",
+    "articles": "Articles",
+    "translations": "Translations",
+    "about": "About",
+    "contact": "Contact",
+    "videos": "Videos"
+  },
+  "hero": {
+    "name": "Khalil Hadaf",
+    "tagline": "Author · Lecturer · Translator"
+  },
+  "footer": {
+    "tagline": "Author · Lecturer · Translator",
+    "rights": "All rights reserved.",
+    "explore": "Explore",
+    "connect": "Connect"
+  },
+  "comments": {
+    "title": "Comments",
+    "leave": "Leave a comment",
+    "name": "Name",
+    "email": "Email (optional)",
+    "body": "Comment",
+    "submit": "Submit comment",
+    "submitting": "Submitting…",
+    "thanks": "Thank you. Your comment has been received and is awaiting approval.",
+    "empty": "No comments yet. Be the first.",
+    "note": "Comments appear after approval. Your email is never published.",
+    "error_generic": "Could not submit. Try again later."
+  },
+  "home": {
+    "intro_label": "A life in letters",
+    "intro_text": "Khalil Hadaf is an author, lecturer, and translator working between Arabic and Persian. Over four decades, his writing has traced the movement of ideas across languages.",
+    "label_archive": "Archive",
+    "heading_featured_books": "Featured Books",
+    "link_all_books": "All books",
+    "label_writing": "Writing",
+    "heading_latest_articles": "Latest Articles",
+    "link_all_articles": "All articles",
+    "label_media": "Media",
+    "heading_selected_videos": "Selected Videos",
+    "link_all_videos": "All videos",
+    "timeline_line": "Four decades of writing, translation, and teaching.",
+    "link_timeline": "See the timeline"
+  },
+  "pages": {
+    "books": {
+      "title": "Books",
+      "subtitle": "Published works and translations"
+    },
+    "articles": {
+      "title": "Articles",
+      "subtitle": "Essays, lectures, and writing"
+    },
+    "translations": {
+      "title": "Translations",
+      "subtitle": "Between Arabic and Persian"
+    },
+    "about": { "title": "About", "subtitle": "A life in letters" },
+    "contact": { "title": "Contact", "subtitle": "Get in touch" }
+  }
+}

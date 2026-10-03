@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-well: #f5f0e8;
+  --color-paper-light: #fdfbf7;
+  --color-paper: #faf7f2;
+  --color-ink: #1c1a17;
+  --color-burgundy: #6e2639;
+  --color-burgundy-dark: #521a29;
+  --color-burgundy-light: #f3e5e8;
+  --color-brass: #b8894a;
+  --color-teal-deep: #1f4e4a;
+  --color-muted: #6b6560;
+  --color-hairline: #e6dfd5;
+
+  /* Fonts */
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-persian: "Vazirmatn", Tahoma, sans-serif;
+
+  /* Max width for prose */
+  --container-prose: 68ch;
+}
+
+/* Base styles */
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-persian);
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-burgundy) 20%, transparent);
+}
+
+/* Article reading view typography */
+.prose-article {
+  font-family: var(--font-serif);
+  font-size: 1.15rem; /* slightly bigger, serif runs smaller than sans */
+  line-height: 1.8; /* more generous leading for serif */
+  color: rgba(28, 26, 23, 0.9);
+}
+.prose-article h2,
+.prose-article h3 {
+  font-family: var(--font-sans);
+  font-weight: 500; /* sans headings need weight to hold up */
+  letter-spacing: -0.01em;
+}
+
+.prose-article > * + * {
+  margin-top: 1.5em;
+}
+
+.prose-article p {
+  max-width: 68ch;
+}
+
+.prose-article h2 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  color: #1c1a17;
+}
+
+.prose-article h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  color: #1c1a17;
+}
+
+.prose-article blockquote {
+  border-inline-start: 2px solid #6e2639;
+  padding-inline-start: 1.5em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: rgba(28, 26, 23, 0.75);
+  max-width: 68ch;
+}
+
+.prose-article a {
+  color: #6e2639;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.prose-article a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.prose-article ul,
+.prose-article ol {
+  padding-inline-start: 1.5em;
+  max-width: 68ch;
+}
+
+.prose-article li {
+  margin-top: 0.5em;
+}
+
+.prose-article img {
+  width: 100%;
+  margin-block: 2em;
+}
+
+.prose-article code {
+  font-size: 0.9em;
+  background: rgba(230, 223, 213, 0.5);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+}
+
+.prose-article pre {
+  background: #1c1a17;
+  color: #faf7f2;
+  padding: 1.25em;
+  overflow-x: auto;
+  border-radius: 2px;
+  font-size: 0.9em;
+}
+
+.prose-article pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.prose-article hr {
+  border: 0;
+  border-top: 1px solid #e6dfd5;
+  margin-block: 3em;
+}
+
+.prose-article .footnotes {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-hairline);
+  font-size: 0.9rem;
+  color: rgba(28, 26, 23, 0.75);
+  font-family: var(--font-sans);
+}
+
+.prose-article .footnotes ol {
+  padding-inline-start: 1.25em;
+}
+
+.prose-article .footnotes li {
+  margin-top: 0.75em;
+  line-height: 1.6;
+}
+
+.prose-article sup a {
+  color: var(--color-burgundy);
+  text-decoration: none;
+  font-size: 0.75em;
+  padding-inline: 0.15em;
+  font-family: var(--font-sans);
+}
+
+.prose-article sup a:hover {
+  text-decoration: underline;
+}
+
+.prose-article .data-footnote-backref {
+  color: var(--color-burgundy);
+  text-decoration: none;
+  margin-inline-start: 0.25em;
+}
