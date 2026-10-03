@@ -120,9 +120,11 @@ export default function AdminBookForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleTitleBlur = () => {
-    if (!form.slug && form.title) {
-      setField("slug", slugify(form.title));
+  const generateSlug = () => {
+    if (form.slug) return; // don't override if dad typed one
+    const source = form.title || form.title_fa;
+    if (source) {
+      setField("slug", slugify(source));
     }
   };
 
@@ -230,7 +232,7 @@ export default function AdminBookForm() {
               type="text"
               value={form.title}
               onChange={(e) => setField("title", e.target.value)}
-              onBlur={handleTitleBlur}
+              onBlur={generateSlug}
               className="w-full border border-hairline bg-white px-3 py-2 text-sm focus:outline-none focus:border-burgundy"
             />
           </Field>
@@ -240,6 +242,7 @@ export default function AdminBookForm() {
               dir="rtl"
               value={form.title_fa}
               onChange={(e) => setField("title_fa", e.target.value)}
+              onBlur={generateSlug}
               className="w-full border border-hairline bg-white px-3 py-2 text-sm focus:outline-none focus:border-burgundy font-persian"
             />
           </Field>

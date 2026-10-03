@@ -66,7 +66,7 @@ export default function FeaturedBooks({ books }: { books: Book[] }) {
     <div className="grid grid-cols-1 md:grid-cols-[380px_280px_1fr] gap-10 md:gap-12 items-start">
       {/* 1) Shelf */}
       <div className="md:pt-24">
-        <div className="flex items-end gap-4 pb-3 min-h-60">
+        <div className="flex items-end gap-2 md:gap-4 pb-3 min-h-45 md:min-h-60">
           {orderedSpines.map((book) => (
             <MiniSpine
               key={book.id}
@@ -188,10 +188,8 @@ function MiniSpine({
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         onMouseEnter={onHover}
         onMouseLeave={onLeave}
-        className="relative cursor-pointer"
+        className={`relative cursor-pointer shrink-0 w-8 h-45 md:w-11 md:h-60`}
         style={{
-          width: 44,
-          height: 240,
           backgroundColor: color,
           borderRadius: "2px 2px 1px 1px",
           boxShadow: isActive
@@ -205,7 +203,7 @@ function MiniSpine({
           className="w-full h-full flex items-center justify-center"
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
-          <span className="font-serif text-paper text-[12px] tracking-[0.22em] uppercase px-3 text-center">
+          <span className="font-serif text-paper text-[10px] md:text-[12px] tracking-[0.22em] uppercase px-3 text-center">
             {displayTitle}
           </span>
         </div>

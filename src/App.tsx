@@ -25,6 +25,7 @@ import AdminSettings from "./pages/admin/AdminSettings";
 import { useAuthBootstrap } from "./hooks/useAuthBootstrap";
 import AdminBookForm from "./pages/admin/AdminBookForm";
 import AdminArticleForm from "./pages/admin/AdminArticleForm";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   useAuthBootstrap();
@@ -39,6 +40,7 @@ export default function App() {
           path="/admin"
           element={
             <RequireAuth>
+              <ScrollToTop />
               <AdminLayout />
             </RequireAuth>
           }
@@ -63,6 +65,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <ScrollToTop />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
