@@ -6,12 +6,20 @@ import { useArticles } from "../hooks/useArticles";
 import { useComments } from "../hooks/useComments";
 import { useUIStore } from "../stores/uiStore";
 import { getTitles } from "../lib/title";
+import ReadingProgress from "../components/sections/ReadingProgress";
 import CommentForm from "../components/sections/CommentForm";
 import CommentList from "../components/sections/CommentList";
-import ReadingProgress from "../components/sections/ReadingProgress";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
+
+const LANG_LABEL: Record<string, string> = {
+  fa: "Persian",
+  ar: "Arabic",
+  en: "English",
+  "fa-ar": "Persian & Arabic",
+  other: "Other",
+};
 
 export default function ArticleDetail() {
   const { slug } = useParams();
@@ -31,7 +39,7 @@ export default function ArticleDetail() {
 
   if (isLoading) {
     return (
-      <div className="max-w-3xl mx-auto px-6 pt-32 md:pt-40 pb-24">
+      <div className="max-w-4xl mx-auto px-6 pt-32 md:pt-40 pb-24">
         <p className="text-muted">Loading…</p>
       </div>
     );
@@ -39,7 +47,7 @@ export default function ArticleDetail() {
 
   if (!article) {
     return (
-      <div className="max-w-3xl mx-auto px-6 pt-32 md:pt-40 pb-24">
+      <div className="max-w-4xl mx-auto px-6 pt-32 md:pt-40 pb-24">
         <h1 className="font-serif text-5xl md:text-6xl font-light tracking-tight">
           Not found
         </h1>
@@ -61,7 +69,7 @@ export default function ArticleDetail() {
   return (
     <article className="max-w-4xl mx-auto px-6 pt-32 md:pt-40 pb-24">
       <ReadingProgress />
-      <header className="mb-12"></header>
+
       <header className="mb-12">
         <Link
           to="/articles"
@@ -97,6 +105,12 @@ export default function ArticleDetail() {
             <>
               <span>·</span>
               <span className="italic">{article.published_in}</span>
+            </>
+          )}
+          {article.language && (
+            <>
+              <span>·</span>
+              <span>{LANG_LABEL[article.language] ?? article.language}</span>
             </>
           )}
         </div>

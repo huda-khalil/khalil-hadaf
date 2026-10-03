@@ -7,6 +7,14 @@ import { getTitles } from "../lib/title";
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
 
+const LANG_LABEL: Record<string, string> = {
+  fa: "Persian",
+  ar: "Arabic",
+  en: "English",
+  "fa-ar": "Persian & Arabic",
+  other: "Other",
+};
+
 export default function BookDetail() {
   const { slug } = useParams();
   const { t } = useTranslation();
@@ -150,7 +158,7 @@ export default function BookDetail() {
                 <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">
                   Language
                 </dt>
-                <dd className="uppercase">{book.language}</dd>
+                <dd>{LANG_LABEL[book.language] ?? book.language}</dd>
               </>
             )}
             <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">

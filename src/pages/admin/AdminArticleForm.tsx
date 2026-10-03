@@ -177,7 +177,7 @@ export default function AdminArticleForm() {
           {isEdit ? "Edit article" : "New article"}
         </div>
         <h1 className="font-serif text-3xl font-light tracking-tight">
-          {isEdit ? form.title || "Edit article" : "Add article"}
+          {isEdit ? form.title || form.title_fa || "Edit book" : "Add book"}
         </h1>
       </div>
 
@@ -283,13 +283,18 @@ export default function AdminArticleForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Field label="Language">
-            <input
-              type="text"
+            <select
               value={form.language}
               onChange={(e) => setField("language", e.target.value)}
-              placeholder="fa / ar / en"
               className="w-full border border-hairline bg-white px-3 py-2 text-sm focus:outline-none focus:border-burgundy"
-            />
+            >
+              <option value="">— Select —</option>
+              <option value="fa">Persian (فارسی)</option>
+              <option value="ar">Arabic (العربية)</option>
+              <option value="en">English</option>
+              <option value="fa-ar">Persian & Arabic</option>
+              <option value="other">Other</option>
+            </select>
           </Field>
           <Field label="Tags (comma-separated)">
             <input
