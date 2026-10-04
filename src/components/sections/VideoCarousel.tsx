@@ -58,7 +58,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   };
 
   return (
-    <div className="relative flex items-center gap-4">
+    <div className="relative flex items-center gap-4" dir="ltr">
       {/* Left arrow */}
       <button
         onClick={() => scrollByCard(-1)}
