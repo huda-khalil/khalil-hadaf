@@ -62,8 +62,9 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       {/* Left arrow */}
       <button
         onClick={() => scrollByCard(-1)}
+        disabled={!canScrollLeft}
         aria-label="Previous"
-        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors"
+        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <svg
           width="18"
@@ -111,18 +112,13 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
               <div className="absolute inset-0 flex items-center justify-center bg-ink/0 group-hover:bg-ink/25 transition-colors duration-300">
                 <div className="w-14 h-14 rounded-full border border-paper/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <svg
-                    width="18"
-                    height="18"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
+                    fill="currentColor"
+                    className="text-paper ms-0.5"
                   >
-                    <path
-                      d="M15 18l-6-6 6-6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                    <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
               </div>
@@ -143,8 +139,9 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       {/* Right arrow */}
       <button
         onClick={() => scrollByCard(1)}
+        disabled={!canScrollRight}
         aria-label="Next"
-        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors"
+        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <svg
           width="18"
