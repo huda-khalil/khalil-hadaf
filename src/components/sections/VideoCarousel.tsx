@@ -58,13 +58,12 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   };
 
   return (
-    <div className="relative flex items-center gap-4" dir="ltr">
+    <div className="relative flex items-center gap-4">
       {/* Left arrow */}
       <button
         onClick={() => scrollByCard(-1)}
-        disabled={!canScrollLeft}
         aria-label="Previous"
-        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors"
       >
         <svg
           width="18"
@@ -74,7 +73,11 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           stroke="currentColor"
           strokeWidth="1.5"
         >
-          <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M15 18l-6-6 6-6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
@@ -140,9 +143,8 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
       {/* Right arrow */}
       <button
         onClick={() => scrollByCard(1)}
-        disabled={!canScrollRight}
         aria-label="Next"
-        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        className="relative z-10 shrink-0 w-11 h-11 flex items-center justify-center border border-ink/40 rounded-full text-ink hover:text-burgundy hover:border-burgundy bg-paper transition-colors"
       >
         <svg
           width="18"
