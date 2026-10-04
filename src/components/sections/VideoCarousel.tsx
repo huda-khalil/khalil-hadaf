@@ -73,6 +73,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
+          className="rtl:rotate-180"
         >
           <path
             d="M15 18l-6-6 6-6"
@@ -112,13 +113,19 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
               <div className="absolute inset-0 flex items-center justify-center bg-ink/0 group-hover:bg-ink/25 transition-colors duration-300">
                 <div className="w-14 h-14 rounded-full border border-paper/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <svg
-                    width="16"
-                    height="16"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="text-paper ms-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="rtl:rotate-180"
                   >
-                    <path d="M8 5v14l11-7z" />
+                    <path
+                      d="M9 6l6 6-6 6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </div>
               </div>
