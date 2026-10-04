@@ -58,7 +58,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
   };
 
   return (
-    <div className="relative flex items-center gap-4">
+    <div className="relative flex items-center gap-4" dir="ltr">
       {/* Left arrow */}
       <button
         onClick={() => scrollByCard(-1)}
@@ -74,11 +74,7 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           stroke="currentColor"
           strokeWidth="1.5"
         >
-          <path
-            d="M15 18l-6-6 6-6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
@@ -118,10 +114,9 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
-                    className="rtl:rotate-180"
                   >
                     <path
-                      d="M9 6l6 6-6 6"
+                      d="M15 18l-6-6 6-6"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
