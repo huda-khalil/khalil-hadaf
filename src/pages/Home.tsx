@@ -139,7 +139,9 @@ export default function Home() {
               </Link>
             </div>
 
-            <VideoCarousel videos={homeVideos} />
+            <div dir="ltr">
+              <VideoCarousel videos={homeVideos} />
+            </div>
           </div>
         </section>
       )}
