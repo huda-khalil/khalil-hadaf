@@ -73,7 +73,6 @@ export default function VideoCarousel({ videos }: { videos: Video[] }) {
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
-          className="rtl:rotate-180"
         >
           <path
             d="M15 18l-6-6 6-6"
