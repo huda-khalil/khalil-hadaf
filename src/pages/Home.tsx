@@ -26,7 +26,7 @@ export default function Home() {
 
   const featuredArticles = articles?.filter((a) => a.featured) ?? [];
   const recentArticles = articles?.filter((a) => !a.featured) ?? [];
-  const homeArticles = [...featuredArticles, ...recentArticles].slice(0, 3);
+  const homeArticles = [...featuredArticles, ...recentArticles].slice(0, 10);
 
   const homeVideos = videos ?? [];
 
