@@ -60,6 +60,10 @@
       "subtitle": "Between Arabic and Persian"
     },
     "about": { "title": "About", "subtitle": "A life in letters" },
-    "contact": { "title": "Contact", "subtitle": "Get in touch" }
+    "contact": { "title": "Contact", "subtitle": "Get in touch" },
+    "videos": {
+      "title": "Videos",
+      "subtitle": "Interviews, lectures, and programs"
+    }
   }
 }

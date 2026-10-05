@@ -183,9 +183,15 @@ export default function AdminTimelineForm() {
 
           <Field label="Sort order">
             <input
-              type="number"
+              type="text"
+              inputMode="numeric"
               value={form.sort_order}
-              onChange={(e) => setField("sort_order", e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value
+                  .replace(/[۰-۹]/g, (d) => String("۰۱۲۳۴۵۶۷۸۹".indexOf(d)))
+                  .replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d)));
+                setField("sort_order", val);
+              }}
               className="w-full border border-hairline bg-white px-3 py-2 text-sm focus:outline-none focus:border-burgundy"
             />
           </Field>

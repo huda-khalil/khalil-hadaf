@@ -54,6 +54,10 @@
     },
     "translations": { "title": "ترجمه‌ها", "subtitle": "میان عربی و فارسی" },
     "about": { "title": "درباره", "subtitle": "یک زندگی در حرف و کلمه" },
-    "contact": { "title": "تماس", "subtitle": "در ارتباط باشید" }
+    "contact": { "title": "تماس", "subtitle": "در ارتباط باشید" },
+    "videos": {
+      "title": "ویدیوها",
+      "subtitle": "مصاحبه‌ها، سخنرانی‌ها و برنامه‌ها"
+    }
   }
 }

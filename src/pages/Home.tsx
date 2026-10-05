@@ -49,7 +49,7 @@ export default function Home() {
             <div className="flex items-end justify-between mb-16">
               <div>
                 <SectionLabel>{t("home.label_archive")}</SectionLabel>
-                <h2 className="font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
+                <h2 className="font-serif text-3xl md:text-4xl font-normal tracking-[0.12em] uppercase">
                   {t("home.heading_featured_books")}
                 </h2>
               </div>
@@ -75,7 +75,7 @@ export default function Home() {
             <div className="flex items-end justify-between mb-12">
               <div>
                 <SectionLabel>{t("home.label_writing")}</SectionLabel>
-                <h2 className="font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
+                <h2 className="font-serif text-3xl md:text-4xl font-normal tracking-[0.12em] uppercase">
                   {t("home.heading_latest_articles")}
                 </h2>
               </div>
@@ -87,12 +87,13 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="border-t border-hairline">
+            {/* <div className="divide-y divide-hairline border-t border-b border-hairline"> */}
+            <div className="divide-y divide-ink/15 border-t border-b border-ink/15">
               {homeArticles.map((article) => (
                 <Link
                   key={article.id}
                   to={`/articles/${article.slug}`}
-                  className="block border-b border-hairline py-8 group"
+                  className="block py-10 group"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10">
                     <div className="text-sm text-muted pt-1">
@@ -127,7 +128,7 @@ export default function Home() {
             <div className="flex items-end justify-between mb-12">
               <div>
                 <SectionLabel>{t("home.label_media")}</SectionLabel>
-                <h2 className="font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
+                <h2 className="font-serif text-3xl md:text-4xl font-normal tracking-[0.12em] uppercase">
                   {t("home.heading_selected_videos")}
                 </h2>
               </div>
