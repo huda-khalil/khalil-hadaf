@@ -57,7 +57,7 @@ export default function Home() {
                 to="/books"
                 className="text-sm tracking-wide text-muted hover:text-burgundy transition-colors pb-2"
               >
-                {t("home.link_all_books")} →
+                {t("home.link_all_books")}
               </Link>
             </div>
 
@@ -71,7 +71,7 @@ export default function Home() {
       {/* ─── Latest Writing ────────────────────────────── */}
       {homeArticles.length > 0 && (
         <section className="bg-well">
-          <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
             <div className="flex items-end justify-between mb-12">
               <div>
                 <SectionLabel>{t("home.label_writing")}</SectionLabel>
@@ -83,7 +83,7 @@ export default function Home() {
                 to="/articles"
                 className="text-sm tracking-wide text-muted hover:text-burgundy transition-colors pb-2"
               >
-                {t("home.link_all_articles")} →
+                {t("home.link_all_articles")}
               </Link>
             </div>
 
@@ -93,18 +93,27 @@ export default function Home() {
                 <Link
                   key={article.id}
                   to={`/articles/${article.slug}`}
-                  className="block py-10 group"
+                  className="relative block py-6 group ps-0 hover:ps-5 transition-all duration-300"
                 >
+                  <span
+                    aria-hidden
+                    className="absolute inset-s-0 top-1/2 -translate-y-1/2 w-[3px] h-0 bg-burgundy transition-all duration-300 group-hover:h-12"
+                  />
+
                   <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10">
                     <div className="text-sm text-muted pt-1">
                       {article.published_at &&
                         new Date(article.published_at).toLocaleDateString(
                           "en-US",
-                          { year: "numeric", month: "short", day: "numeric" },
+                          {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          },
                         )}
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl md:text-2xl font-light group-hover:text-burgundy transition-colors">
+                      <h3 className="font-serif text-2xl md:text-3xl font-light group-hover:text-burgundy transition-colors">
                         {article.title}
                       </h3>
                       {article.excerpt && (
