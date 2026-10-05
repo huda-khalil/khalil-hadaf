@@ -7,9 +7,22 @@ type UIState = {
   toggleMobileNav: () => void;
 };
 
+// Read the saved language from localStorage, default to "en"
+function getInitialLang(): "en" | "fa" {
+  if (typeof window === "undefined") return "en";
+  const saved = window.localStorage.getItem("khalil-hadaf-lang");
+  if (saved === "fa" || saved === "en") return saved;
+  return "en";
+}
+
 export const useUIStore = create<UIState>((set) => ({
-  lang: "en",
-  setLang: (lang) => set({ lang }),
+  lang: getInitialLang(),
+  setLang: (lang) => {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("khalil-hadaf-lang", lang);
+    }
+    set({ lang });
+  },
   mobileNavOpen: false,
   toggleMobileNav: () => set((s) => ({ mobileNavOpen: !s.mobileNavOpen })),
 }));
