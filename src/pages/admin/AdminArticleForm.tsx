@@ -22,6 +22,7 @@ type FormState = {
   body_md: string;
   body_md_fa: string;
   cover_path: string;
+  pdf_path: string;
   published_in: string;
   published_at: string;
   language: string;
@@ -39,6 +40,7 @@ const EMPTY: FormState = {
   body_md: "",
   body_md_fa: "",
   cover_path: "",
+  pdf_path: "",
   published_in: "",
   published_at: new Date().toISOString().slice(0, 10),
   language: "",
@@ -60,6 +62,7 @@ export default function AdminArticleForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [coverFile, setCoverFile] = useState<File | null>(null);
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
+  const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
@@ -73,6 +76,7 @@ export default function AdminArticleForm() {
         body_md: existing.body_md ?? "",
         body_md_fa: existing.body_md_fa ?? "",
         cover_path: existing.cover_path ?? "",
+        pdf_path: existing.pdf_path ?? "",
         published_in: existing.published_in ?? "",
         published_at: existing.published_at ?? "",
         language: existing.language ?? "",
@@ -106,6 +110,11 @@ export default function AdminArticleForm() {
     setCoverFile(file);
     setCoverPreview(URL.createObjectURL(file));
   };
+  const handlePdfPick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPdfFile(file);
+  };
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -116,6 +125,7 @@ export default function AdminArticleForm() {
       title_fa: form.title_fa || null,
       excerpt: form.excerpt || null,
       excerpt_fa: form.excerpt_fa || null,
+      pdf_path: form.pdf_path || null,
       body_md: form.body_md || null,
       body_md_fa: form.body_md_fa || null,
       published_in: form.published_in || null,
@@ -142,12 +152,20 @@ export default function AdminArticleForm() {
     setSaving(true);
     try {
       let coverPath = form.cover_path;
+      let pdfPath = form.pdf_path;
 
       if (coverFile) {
-        coverPath = await uploadFile(coverFile, "article-covers");
+        coverPath = await uploadFile(coverFile, "article-pdfs");
+      }
+      if (pdfFile) {
+        pdfPath = await uploadFile(pdfFile, "article-pdfs");
       }
 
-      const finalPayload = { ...parsed.data, cover_path: coverPath || null };
+      const finalPayload = {
+        ...parsed.data,
+        cover_path: coverPath || null,
+        pdf_path: pdfPath || null,
+      };
 
       if (isEdit && id) {
         await updateMutation.mutateAsync({ id, input: finalPayload });
@@ -238,6 +256,26 @@ export default function AdminArticleForm() {
               className="text-sm text-muted file:me-4 file:px-4 file:py-2 file:border file:border-hairline file:bg-white file:text-sm file:cursor-pointer hover:file:border-burgundy"
             />
           </div>
+        </Field>
+        <Field label="Body (Markdown)">
+          <div className="flex items-center gap-4">
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={handlePdfPick}
+              className="text-sm text-muted file:me-4 file:px-4 file:py-2 file:border file:border-hairline file:bg-white file:text-sm file:cursor-pointer hover:file:border-burgundy"
+            />
+            {form.pdf_path && (
+              <span className="text-xs text-muted">
+                Current: {form.pdf_path.split("/").pop()}
+              </span>
+            )}
+          </div>
+          <p className="mt-2 text-xs text-muted">
+            For short articles: write the full text here. For long articles:
+            write a short introduction (10–50 lines) and upload the full PDF
+            above. Use # for headings, ** for bold, * for italic.
+          </p>
         </Field>
 
         {/* Excerpt */}

@@ -10,6 +10,7 @@ export const ArticleSchema = z.object({
   body_md: z.string().nullable(),
   body_md_fa: z.string().nullable(),
   cover_path: z.string().nullable(),
+  pdf_path: z.string().nullable(),
   published_in: z.string().nullable(),
   published_at: z.string().nullable(),
   language: z.string().nullable(),

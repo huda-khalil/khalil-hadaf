@@ -130,6 +130,37 @@ export default function ArticleDetail() {
         </div>
       )}
 
+      {article.pdf_path && (
+        <div className="mt-16 pt-10 border-t border-hairline">
+          <div className="text-xs uppercase tracking-[0.3em] text-brass mb-4">
+            Full article
+          </div>
+          <p className="text-ink/80 leading-relaxed max-w-prose mb-6">
+            To read the complete article, open or download the PDF below.
+          </p>
+
+          <div className="flex items-center gap-6 text-sm tracking-wide">
+            <a
+              href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${article.pdf_path}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-burgundy hover:underline"
+            >
+              Read full article
+              <span>→</span>
+            </a>
+            <span className="text-hairline">·</span>
+            <a
+              href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${article.pdf_path}`}
+              download
+              className="text-muted hover:text-burgundy transition-colors"
+            >
+              Download PDF
+            </a>
+          </div>
+        </div>
+      )}
+
       {article.tags.length > 0 && (
         <div className="mt-16 pt-8 border-t border-hairline flex flex-wrap gap-2">
           {article.tags.map((tag) => (

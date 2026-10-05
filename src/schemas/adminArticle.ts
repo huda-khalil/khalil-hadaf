@@ -10,6 +10,7 @@ export const AdminArticleSchema = z
     body_md: z.string().optional().nullable(),
     body_md_fa: z.string().optional().nullable(),
     cover_path: z.string().optional().nullable(),
+    pdf_path: z.string().optional().nullable(),
     published_in: z.string().optional().nullable(),
     published_at: z.string().optional().nullable(),
     language: z.string().optional().nullable(),

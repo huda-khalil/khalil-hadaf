@@ -139,6 +139,8 @@ export default function Home() {
               </Link>
             </div>
 
+            {/* Video carousel: kept LTR in both languages. The physical layout of
+    thumbnails doesn't mirror, and the arrows should stay visually consistent. */}
             <div dir="ltr">
               <VideoCarousel videos={homeVideos} />
             </div>
