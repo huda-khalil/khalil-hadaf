@@ -3,7 +3,7 @@ import { z } from "zod";
 export const BookSchema = z.object({
   id: z.string().uuid(),
   slug: z.string(),
-  title: z.string(),
+  title: z.string().nullable(),
   title_fa: z.string().nullable(),
   subtitle: z.string().nullable(),
   subtitle_fa: z.string().nullable(),

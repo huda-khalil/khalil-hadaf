@@ -3,7 +3,7 @@ import { z } from "zod";
 export const TimelineEventSchema = z.object({
   id: z.uuid(),
   year: z.number(),
-  title: z.string(),
+  title: z.string().nullable(),
   title_fa: z.string().nullable(),
   description: z.string().nullable(),
   description_fa: z.string().nullable(),

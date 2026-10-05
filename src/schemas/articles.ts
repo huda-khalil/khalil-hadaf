@@ -3,7 +3,7 @@ import { z } from "zod";
 export const ArticleSchema = z.object({
   id: z.string().uuid(),
   slug: z.string(),
-  title: z.string(),
+  title: z.string().nullable(),
   title_fa: z.string().nullable(),
   excerpt: z.string().nullable(),
   excerpt_fa: z.string().nullable(),
