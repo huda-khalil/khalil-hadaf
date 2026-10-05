@@ -26,6 +26,7 @@ import { useAuthBootstrap } from "./hooks/useAuthBootstrap";
 import AdminBookForm from "./pages/admin/AdminBookForm";
 import AdminArticleForm from "./pages/admin/AdminArticleForm";
 import ScrollToTop from "./components/ScrollToTop";
+import AdminTimelineForm from "./pages/admin/AdminTimelineForm";
 
 export default function App() {
   useAuthBootstrap();
@@ -55,6 +56,8 @@ export default function App() {
           <Route path="translations" element={<AdminTranslations />} />
           <Route path="videos" element={<AdminVideos />} />
           <Route path="timeline" element={<AdminTimeline />} />
+          <Route path="timeline/new" element={<AdminTimelineForm />} />
+          <Route path="timeline/:id" element={<AdminTimelineForm />} />
           <Route path="comments" element={<AdminComments />} />
           <Route path="pages" element={<AdminPages />} />
           <Route path="settings" element={<AdminSettings />} />
