@@ -169,7 +169,7 @@ function CoverReveal({ book }: { book: Book }) {
         {url ? (
           <img
             src={url}
-            alt={book.title}
+            alt={book.title || book.title_fa || ""}
             className="w-full h-full object-cover"
           />
         ) : (

@@ -72,7 +72,7 @@ export default function AdminBooks() {
                     {coverUrl(book.cover_path) ? (
                       <img
                         src={coverUrl(book.cover_path)!}
-                        alt={book.title}
+                        alt={book.title || book.title_fa || ""}
                         className="w-10 h-14 object-cover"
                       />
                     ) : (
