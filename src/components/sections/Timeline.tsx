@@ -54,6 +54,7 @@ function TimelineItem({
   const photoUrl = event.photo_path
     ? `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${event.photo_path}`
     : null;
+  const altText = event.title || event.title_fa || "";
 
   return (
     <div className="relative grid grid-cols-2 gap-x-16 py-12">
@@ -62,7 +63,7 @@ function TimelineItem({
         {isStart ? (
           <EventContent event={event} align="end" />
         ) : photoUrl ? (
-          <EventPhoto url={photoUrl} alt={event.title} align="end" />
+          <EventPhoto url={photoUrl} alt={altText} align="end" />
         ) : null}
       </div>
 
@@ -71,7 +72,7 @@ function TimelineItem({
         {!isStart ? (
           <EventContent event={event} align="start" />
         ) : photoUrl ? (
-          <EventPhoto url={photoUrl} alt={event.title} align="start" />
+          <EventPhoto url={photoUrl} alt={altText} align="start" />
         ) : null}
       </div>
 
@@ -109,7 +110,7 @@ function EventContent({
       </div>
 
       <div className="mt-3 font-serif text-xl md:text-2xl font-light text-ink">
-        {event.title}
+        {event.title || event.title_fa}
       </div>
 
       {event.description && (

@@ -7,7 +7,7 @@
  *              and differs from the primary
  */
 export function getTitles(
-  item: { title: string; title_fa?: string | null },
+  item: { title: string | null; title_fa?: string | null },
   lang: "en" | "fa",
 ): { primary: string; secondary: string | null } {
   const en = item.title?.trim() || null;
