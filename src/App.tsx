@@ -27,9 +27,11 @@ import AdminBookForm from "./pages/admin/AdminBookForm";
 import AdminArticleForm from "./pages/admin/AdminArticleForm";
 import ScrollToTop from "./components/ScrollToTop";
 import AdminTimelineForm from "./pages/admin/AdminTimelineForm";
+import { useScrollRestoration } from "./hooks/useScrollRestoration";
 
 export default function App() {
   useAuthBootstrap();
+  useScrollRestoration();
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
 
