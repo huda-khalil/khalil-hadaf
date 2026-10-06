@@ -140,24 +140,30 @@ export default function ArticleDetail() {
           <div className="text-xs uppercase tracking-[0.3em] text-brass mb-4">
             Full article
           </div>
-          <p className="text-ink/80 leading-relaxed max-w-prose mb-6">
+          <p className="text-ink/80 leading-relaxed max-w-prose mb-8">
             To read the complete article, open or download the PDF below.
           </p>
 
-          <div className="flex items-center gap-6 text-sm tracking-wide">
-            <ArrowLink
+          <div className="flex items-center gap-8 text-sm">
+            <a
               href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${article.pdf_path}`}
-              variant="primary"
+              target="_blank"
+              rel="noreferrer"
+              className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-ink py-2 transition-colors"
             >
-              Read full article
-            </ArrowLink>
-            <span className="text-hairline">·</span>
+              <span className="relative z-10">Read full article</span>
+              <span className="absolute bottom-1.5 inset-x-0 h-px bg-ink/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
+              <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
+            </a>
+
             <a
               href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${article.pdf_path}`}
               download
-              className="text-muted hover:text-burgundy transition-colors"
+              className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-muted py-2 transition-colors hover:text-ink"
             >
-              Download PDF
+              <span className="relative z-10">Download PDF</span>
+              <span className="absolute bottom-1.5 inset-x-0 h-px bg-muted/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
+              <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
             </a>
           </div>
         </div>

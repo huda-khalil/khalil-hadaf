@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useBooks } from "../hooks/useBooks";
 import { useUIStore } from "../stores/uiStore";
@@ -62,12 +62,14 @@ export default function BookDetail() {
     <div className="max-w-6xl mx-auto px-6 pt-32 md:pt-40 pb-24">
       {/* Header */}
       <header className="mb-16">
-        <Link
+        <ArrowLink
           to="/books"
-          className="text-xs uppercase tracking-[0.2em] text-muted hover:text-burgundy transition-colors"
+          direction="back"
+          variant="muted"
+          className="text-xs uppercase tracking-[0.2em]"
         >
-          ← {t("nav.books")}
-        </Link>
+          {t("nav.books")}
+        </ArrowLink>
 
         <h1 className="mt-6 font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
           {primary}
@@ -111,20 +113,26 @@ export default function BookDetail() {
             )}
 
             {book.pdf_path && (
-              <div className="flex items-center gap-4 text-sm tracking-wide">
-                <ArrowLink
+              <div className="flex items-center gap-8 text-sm">
+                <a
                   href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${book.pdf_path}`}
-                  variant="primary"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-ink py-2 transition-colors"
                 >
-                  Read PDF
-                </ArrowLink>
-                <span className="text-hairline">·</span>
+                  <span className="relative z-10">Read</span>
+                  <span className="absolute bottom-1.5 inset-x-0 h-px bg-ink/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
+                  <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
+                </a>
+
                 <a
                   href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${book.pdf_path}`}
                   download
-                  className="text-muted hover:text-burgundy transition-colors"
+                  className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-muted py-2 transition-colors hover:text-ink"
                 >
-                  Download
+                  <span className="relative z-10">Download</span>
+                  <span className="absolute bottom-1.5 inset-x-0 h-px bg-muted/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
+                  <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
                 </a>
               </div>
             )}
