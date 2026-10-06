@@ -71,7 +71,7 @@ export default function Home() {
         <section className="bg-well">
           <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
             <div className="flex items-end justify-between mb-12">
-              <div>
+              <div flex-1>
                 <SectionLabel>{t("home.label_writing")}</SectionLabel>
                 <h2 className="heading-glow font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
                   {t("home.heading_latest_articles")}

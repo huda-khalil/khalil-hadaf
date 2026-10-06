@@ -19,7 +19,6 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --font-persian: "Vazirmatn", Tahoma, sans-serif;
   --font-arabic-display: "Amiri", "Noto Naskh Arabic", "Vazirmatn", serif;
-  --font-arabic-display: "Lemonada", "Amiri", "Vazirmatn", serif;
 
   /* Max width for prose */
   --container-prose: 68ch;
