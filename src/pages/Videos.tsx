@@ -2,6 +2,7 @@ import PageShell from "../components/layout/PageShell";
 import VideoGrid from "../components/sections/VideoGrid";
 import { useVideos } from "../hooks/useVideos";
 import { useTranslation } from "react-i18next";
+import Loading from "../components/ui/Loading";
 
 export default function Videos() {
   const { data: videos, isLoading, error } = useVideos();
@@ -12,7 +13,7 @@ export default function Videos() {
       title={t("pages.videos.title")}
       subtitle={t("pages.videos.subtitle")}
     >
-      {isLoading && <p className="text-muted">Loading…</p>}
+      {isLoading && <Loading />}
       {error && <p className="text-burgundy">Could not load videos.</p>}
       {videos && videos.length === 0 && (
         <p className="text-muted">No videos yet.</p>

@@ -4,6 +4,7 @@ import {
   useAdminTimeline,
   useDeleteTimelineEvent,
 } from "../../hooks/useAdminTimeline";
+import Loading from "../../components/ui/Loading";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -42,7 +43,7 @@ export default function AdminTimeline() {
         </Link>
       </div>
 
-      {isLoading && <p className="text-muted text-sm">Loading…</p>}
+      <Loading label="Loading" />
       {error && (
         <p className="text-burgundy text-sm">Failed to load timeline events.</p>
       )}

@@ -4,6 +4,7 @@ import {
   useAdminArticles,
   useDeleteArticle,
 } from "../../hooks/useAdminArticles";
+import Loading from "../../components/ui/Loading";
 
 export default function AdminArticles() {
   const { data: articles, isLoading, error } = useAdminArticles();
@@ -34,7 +35,7 @@ export default function AdminArticles() {
         </Link>
       </div>
 
-      {isLoading && <p className="text-muted text-sm">Loading…</p>}
+      <Loading label="Loading" />
       {error && (
         <p className="text-burgundy text-sm">Failed to load articles.</p>
       )}

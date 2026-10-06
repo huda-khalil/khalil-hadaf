@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAdminBooks, useDeleteBook } from "../../hooks/useAdminBooks";
+import Loading from "../../components/ui/Loading";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -39,7 +40,7 @@ export default function AdminBooks() {
         </Link>
       </div>
 
-      {isLoading && <p className="text-muted text-sm">Loading…</p>}
+      {isLoading && <Loading />}
       {error && <p className="text-burgundy text-sm">Failed to load books.</p>}
 
       {books && books.length === 0 && (

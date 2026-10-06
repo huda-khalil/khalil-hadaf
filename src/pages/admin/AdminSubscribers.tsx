@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../../lib/supabase";
 import { SubscribersSchema } from "../../schemas/subscriber";
+import Loading from "../../components/ui/Loading";
 
 export default function AdminSubscribers() {
   const {
@@ -62,7 +63,7 @@ export default function AdminSubscribers() {
         )}
       </div>
 
-      {isLoading && <p className="text-muted text-sm">Loading…</p>}
+      {isLoading && <Loading />}
       {error && (
         <p className="text-burgundy text-sm">Failed to load subscribers.</p>
       )}

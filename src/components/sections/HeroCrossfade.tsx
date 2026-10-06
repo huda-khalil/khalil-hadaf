@@ -17,6 +17,7 @@ const HERO_IMAGES: HeroImage[] = [
   { path: "hero/hero-6.jpg", position: "center 50%" },
   { path: "hero/hero-7.jpg", position: "center 80%" },
   { path: "hero/hero-8.jpg" },
+  { path: "hero/hero-9.jpg" },
 ];
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";

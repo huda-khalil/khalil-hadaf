@@ -6,6 +6,7 @@ import {
   useDeleteComment,
 } from "../../hooks/useComments";
 import { useAdminArticles } from "../../hooks/useAdminArticles";
+import Loading from "../../components/ui/Loading";
 
 type Tab = "pending" | "approved" | "rejected";
 
@@ -107,7 +108,7 @@ export default function AdminComments() {
       </div>
 
       {/* States */}
-      {isLoading && <p className="text-muted text-sm">Loading…</p>}
+      {isLoading && <Loading />}
       {error && (
         <p className="text-burgundy text-sm">Failed to load comments.</p>
       )}

@@ -3,6 +3,7 @@ import PageShell from "../components/layout/PageShell";
 import Timeline from "../components/sections/Timeline";
 import { useTimeline } from "../hooks/useTimeline";
 import NewsletterForm from "../components/sections/NewsletterForm";
+import Loading from "../components/ui/Loading";
 
 export default function About() {
   const { t } = useTranslation();
@@ -21,7 +22,7 @@ export default function About() {
         </p>
       </div>
 
-      {isLoading && <p className="text-muted">Loading…</p>}
+      {isLoading && <Loading />}
 
       {error && <p className="text-burgundy">Could not load timeline.</p>}
 

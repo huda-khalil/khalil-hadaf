@@ -5,6 +5,7 @@ import { useUIStore } from "../stores/uiStore";
 import { getTitles } from "../lib/title";
 import { ArrowLink } from "../components/ui/ArrowLink";
 import MoreBooks from "../components/sections/MoreBooks";
+import Loading from "../components/ui/Loading";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -31,7 +32,7 @@ export default function BookDetail() {
   if (isLoading) {
     return (
       <div className="max-w-6xl mx-auto px-6 pt-32 md:pt-40 pb-24">
-        <p className="text-muted">Loading…</p>
+        <Loading />
       </div>
     );
   }

@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 import PageShell from "../components/layout/PageShell";
 import BookShelf from "../components/sections/BookShelf";
 import { useBooks } from "../hooks/useBooks";
+import Loading from "../components/ui/Loading";
+
 // import { useUIStore } from "../stores/uiStore";
 
 export default function Books() {
@@ -14,7 +16,7 @@ export default function Books() {
       title={t("pages.books.title")}
       subtitle={t("pages.books.subtitle")}
     >
-      {isLoading && <p className="text-muted">Loading…</p>}
+      {isLoading && <Loading />}
 
       {error && <p className="text-burgundy">Could not load books.</p>}
 

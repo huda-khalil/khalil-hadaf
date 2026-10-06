@@ -4,6 +4,7 @@ import PageShell from "../components/layout/PageShell";
 import { useArticles } from "../hooks/useArticles";
 import { useUIStore } from "../stores/uiStore";
 import { getTitles } from "../lib/title";
+import Loading from "../components/ui/Loading";
 
 export default function Articles() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ export default function Articles() {
       title={t("pages.articles.title")}
       subtitle={t("pages.articles.subtitle")}
     >
-      {isLoading && <p className="text-muted">Loading…</p>}
+      {isLoading && <Loading />}
 
       {error && <p className="text-burgundy">Could not load articles.</p>}
 
