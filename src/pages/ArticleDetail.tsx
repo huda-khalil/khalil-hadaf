@@ -10,7 +10,6 @@ import ReadingProgress from "../components/sections/ReadingProgress";
 import CommentForm from "../components/sections/CommentForm";
 import CommentList from "../components/sections/CommentList";
 import { ArrowLink } from "../components/ui/ArrowLink";
-import Loading from "../components/ui/Loading";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -21,6 +20,14 @@ const LANG_LABEL: Record<string, string> = {
   en: "English",
   "fa-ar": "Persian & Arabic",
   other: "Other",
+};
+
+const LANG_LABEL_FA: Record<string, string> = {
+  fa: "فارسی",
+  ar: "عربی",
+  en: "انگلیسی",
+  "fa-ar": "فارسی و عربی",
+  other: "سایر",
 };
 
 export default function ArticleDetail() {
@@ -41,8 +48,8 @@ export default function ArticleDetail() {
 
   if (isLoading) {
     return (
-      <div className="max-w-6xl mx-auto px-6 pt-32 md:pt-40 pb-24">
-        <Loading />
+      <div className="max-w-4xl mx-auto px-6 pt-32 md:pt-40 pb-24">
+        <p className="text-muted">{t("common.loading")}</p>
       </div>
     );
   }
@@ -51,16 +58,16 @@ export default function ArticleDetail() {
     return (
       <div className="max-w-4xl mx-auto px-6 pt-32 md:pt-40 pb-24">
         <h1 className="font-serif text-5xl md:text-6xl font-light tracking-tight">
-          Not found
+          {t("article_detail.not_found")}
         </h1>
-        <p className="mt-4 text-muted">This article doesn't exist.</p>
+        <p className="mt-4 text-muted">{t("article_detail.not_found_text")}</p>
         <ArrowLink
           to="/articles"
           direction="back"
           variant="muted"
           className="mt-6 text-xs uppercase tracking-[0.2em]"
         >
-          {t("nav.articles")}
+          {t("article_detail.back")}
         </ArrowLink>
       </div>
     );
@@ -69,6 +76,8 @@ export default function ArticleDetail() {
   const coverUrl = article.cover_path
     ? `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${article.cover_path}`
     : null;
+
+  const langLabelMap = lang === "fa" ? LANG_LABEL_FA : LANG_LABEL;
 
   return (
     <article className="max-w-4xl mx-auto px-6 pt-32 md:pt-40 pb-24">
@@ -81,7 +90,7 @@ export default function ArticleDetail() {
           variant="muted"
           className="text-xs uppercase tracking-[0.2em]"
         >
-          {t("nav.articles")}
+          {t("article_detail.back")}
         </ArrowLink>
 
         <h1 className="mt-6 font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
@@ -116,7 +125,7 @@ export default function ArticleDetail() {
           {article.language && (
             <>
               <span>·</span>
-              <span>{LANG_LABEL[article.language] ?? article.language}</span>
+              <span>{langLabelMap[article.language] ?? article.language}</span>
             </>
           )}
         </div>
@@ -139,10 +148,10 @@ export default function ArticleDetail() {
       {article.pdf_path && (
         <div className="mt-16 pt-10 border-t border-hairline">
           <div className="text-xs uppercase tracking-[0.3em] text-brass mb-4">
-            Full article
+            {t("article_detail.full_article")}
           </div>
           <p className="text-ink/80 leading-relaxed max-w-prose mb-8">
-            To read the complete article, open or download the PDF below.
+            {t("article_detail.full_article_text")}
           </p>
 
           <div className="flex items-center gap-8 text-sm">
@@ -152,7 +161,9 @@ export default function ArticleDetail() {
               rel="noreferrer"
               className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-ink py-2 transition-colors"
             >
-              <span className="relative z-10">Read full article</span>
+              <span className="relative z-10">
+                {t("article_detail.read_full")}
+              </span>
               <span className="absolute bottom-1.5 inset-x-0 h-px bg-ink/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
               <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
             </a>
@@ -162,7 +173,9 @@ export default function ArticleDetail() {
               download
               className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-muted py-2 transition-colors hover:text-ink"
             >
-              <span className="relative z-10">Download PDF</span>
+              <span className="relative z-10">
+                {t("article_detail.download_pdf")}
+              </span>
               <span className="absolute bottom-1.5 inset-x-0 h-px bg-muted/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
               <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
             </a>
@@ -187,7 +200,7 @@ export default function ArticleDetail() {
         <div className="flex items-end justify-between mb-10">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-brass mb-3">
-              Discussion
+              {t("article_detail.discussion")}
             </div>
             <h2 className="font-serif text-2xl md:text-3xl font-light tracking-tight">
               {t("comments.title")}
@@ -204,7 +217,7 @@ export default function ArticleDetail() {
 
         <div className="mt-16">
           <div className="text-xs uppercase tracking-[0.3em] text-brass mb-3">
-            Join in
+            {t("article_detail.join_in")}
           </div>
           <h3 className="font-serif text-xl md:text-2xl font-light tracking-tight mb-6">
             {t("comments.leave")}

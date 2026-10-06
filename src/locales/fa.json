@@ -55,7 +55,9 @@
     "buy": "خرید",
     "read_pdf": "خواندن پی‌دی‌اف",
     "download": "دانلود",
-    "full_book": "کتاب کامل"
+    "full_book": "کتاب کامل",
+    "more_from_shelf": "بیشتر از قفسه",
+    "other_books": "کتاب‌های دیگر"
   },
   "article_detail": {
     "back": "بازگشت به مقالات",
@@ -66,9 +68,7 @@
     "read_full": "خواندن مقاله کامل",
     "download_pdf": "دانلود پی‌دی‌اف",
     "discussion": "گفت‌وگو",
-    "join_in": "مشارکت",
-    "more_from_shelf": "بیشتر از قفسه",
-    "other_books": "کتاب‌های دیگر"
+    "join_in": "مشارکت"
   },
   "category": {
     "authored": "تألیف",
