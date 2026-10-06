@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Book } from "../../schemas/book";
 import { useUIStore } from "../../stores/uiStore";
+import { getTitles } from "../../lib/title";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -38,9 +39,9 @@ function ShelfRow({ books }: { books: Book[] }) {
 
   return (
     <div className="relative bg-well rounded-sm px-6 pt-8 pb-0">
-      <div className="flex items-end justify-between gap-6 pb-3">
-        {/* Spines — take up the left side (right in RTL) */}
-        <div className="flex items-end gap-3">
+      <div className="flex items-start justify-between gap-6 pb-3">
+        {/* Spines */}
+        <div className="flex items-end gap-3 md:pt-24">
           {books.map((book) => (
             <Spine
               key={book.id}
@@ -53,28 +54,27 @@ function ShelfRow({ books }: { books: Book[] }) {
           ))}
         </div>
 
-        {/* Fixed cover panel — always on the end side of the row */}
+        {/* Fixed preview panel */}
         <div
-          className="relative hidden md:block shrink-0 bg-well/50 border border-hairline rounded-sm"
-          style={{ width: 380, height: 520 }}
+          className="relative hidden md:block shrink-0"
+          style={{ width: 560, minHeight: 420 }}
         >
           <AnimatePresence mode="wait">
             {hoveredBook ? (
-              <CoverReveal key={hoveredBook.id} book={hoveredBook} />
+              <BookPreview
+                key={hoveredBook.id}
+                book={hoveredBook}
+                lang={lang}
+              />
             ) : (
               <motion.div
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 4 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 flex items-center justify-center p-3"
+                key="empty"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 flex items-center justify-center"
               >
-                <div
-                  className="bg-paper p-2 w-full h-full flex items-center justify-center"
-                  style={{ boxShadow: "0 12px 30px rgba(28, 26, 23, 0.18)" }}
-                >
-                  {/* cover */}
-                </div>
+                <div className="h-px w-12 bg-brass/40" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -82,14 +82,6 @@ function ShelfRow({ books }: { books: Book[] }) {
       </div>
 
       <div className="h-px w-full bg-hairline" />
-      {/* <div
-        className="h-2 w-full rounded-sm"
-        style={{
-          background:
-            "linear-gradient(180deg, #8B6A47 0%, #6F5135 55%, #5A4029 100%)",
-          boxShadow: "0 4px 8px rgba(28, 26, 23, 0.15)",
-        }}
-      /> */}
     </div>
   );
 }
@@ -108,6 +100,8 @@ function Spine({
   onLeave: () => void;
 }) {
   const color = book.spine_color ?? "#6E2639";
+  const displayTitle =
+    lang === "fa" ? book.title_fa || book.title : book.title || book.title_fa;
 
   return (
     <Link to={`/books/${book.slug}`}>
@@ -138,9 +132,7 @@ function Spine({
           }}
         >
           <span className="font-serif text-paper text-[13px] tracking-[0.2em] uppercase px-4 text-center">
-            {lang === "fa"
-              ? book.title_fa || book.title
-              : book.title || book.title_fa}
+            {displayTitle}
           </span>
         </div>
 
@@ -151,33 +143,75 @@ function Spine({
   );
 }
 
-function CoverReveal({ book }: { book: Book }) {
+function BookPreview({ book, lang }: { book: Book; lang: "en" | "fa" }) {
+  const { primary, secondary } = getTitles(book, lang);
   const url = coverUrl(book.cover_path);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 4 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 4 }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0 flex items-center justify-center"
+      exit={{ opacity: 0, y: 8 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="grid grid-cols-[220px_1fr] gap-8 items-start h-full"
     >
-      <div
-        className="bg-paper p-2 w-full h-full flex items-center justify-center"
-        style={{ boxShadow: "0 12px 30px rgba(28, 26, 23, 0.18)" }}
-      >
-        {url ? (
-          <img
-            src={url}
-            alt={book.title || book.title_fa || ""}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div
-            className="w-full h-full"
-            style={{ backgroundColor: book.spine_color ?? "#6E2639" }}
-          />
-        )}
+      {/* Cover */}
+      <Link to={`/books/${book.slug}`} className="block">
+        <div
+          className="aspect-[2/3] w-full bg-paper p-2"
+          style={{ boxShadow: "0 12px 30px rgba(28, 26, 23, 0.18)" }}
+        >
+          {url ? (
+            <img
+              src={url}
+              alt={primary}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div
+              className="w-full h-full"
+              style={{ backgroundColor: book.spine_color ?? "#6E2639" }}
+            />
+          )}
+        </div>
+      </Link>
+
+      {/* Metadata panel */}
+      <div className="bg-paper border border-hairline rounded-sm p-6 h-full">
+        <Link to={`/books/${book.slug}`} className="block group">
+          <h3 className="font-serif text-2xl font-light tracking-tight leading-tight group-hover:text-burgundy transition-colors">
+            {primary}
+          </h3>
+
+          {secondary && (
+            <p
+              className="mt-2 font-serif text-base font-light text-muted"
+              dir={lang === "en" ? "rtl" : "ltr"}
+            >
+              {secondary}
+            </p>
+          )}
+
+          <div className="mt-3 font-serif italic text-muted text-sm">
+            Khalil Hadaf
+          </div>
+
+          {book.description && (
+            <p className="mt-5 text-ink/80 leading-relaxed text-sm line-clamp-5">
+              {book.description}
+            </p>
+          )}
+
+          <div className="mt-5 flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-brass">
+            {book.year && <span>{book.year}</span>}
+            <span className="h-px w-4 bg-brass/60" />
+            <span>{book.category}</span>
+          </div>
+
+          <div className="mt-5 text-sm tracking-wide text-burgundy group-hover:underline">
+            Read more →
+          </div>
+        </Link>
       </div>
     </motion.div>
   );
