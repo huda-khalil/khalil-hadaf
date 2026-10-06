@@ -4,6 +4,7 @@ import { useBooks } from "../hooks/useBooks";
 import { useUIStore } from "../stores/uiStore";
 import { getTitles } from "../lib/title";
 import { ArrowLink } from "../components/ui/ArrowLink";
+import MoreBooks from "../components/sections/MoreBooks";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -194,6 +195,32 @@ export default function BookDetail() {
           )}
         </div>
       </div>
+      {books && books.length > 1 && (
+        <section className="mt-32 pt-16 border-t border-hairline">
+          <div className="mb-10 flex items-end justify-between">
+            <div>
+              <div className="mb-4 flex items-center gap-4">
+                <span className="h-px w-8 bg-brass" />
+                <span className="text-xs uppercase tracking-[0.3em] text-brass">
+                  More from the shelf
+                </span>
+              </div>
+              <h2 className="font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
+                Other books
+              </h2>
+            </div>
+            <ArrowLink
+              to="/books"
+              variant="muted"
+              className="text-xs uppercase tracking-[0.2em] pb-1"
+            >
+              All books
+            </ArrowLink>
+          </div>
+
+          <MoreBooks books={books} excludeId={book.id} />
+        </section>
+      )}
     </div>
   );
 }
