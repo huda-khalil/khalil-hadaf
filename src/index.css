@@ -190,9 +190,9 @@ html[dir="rtl"] body {
   inset: -12px -24px;
   background: linear-gradient(
     135deg,
-    rgba(110, 38, 57, 0.07) 0%,
-    rgba(110, 38, 57, 0.03) 30%,
-    transparent 65%
+    rgba(110, 38, 57, 0.15) 0%,
+    rgba(110, 38, 57, 0.07) 35%,
+    transparent 75%
   );
   border-radius: 4px;
   pointer-events: none;
@@ -202,27 +202,9 @@ html[dir="rtl"] body {
 html[dir="rtl"] .heading-glow::before {
   background: linear-gradient(
     225deg,
-    rgba(110, 38, 57, 0.07) 0%,
-    rgba(110, 38, 57, 0.03) 30%,
-    transparent 65%
-  );
-}
-
-html[dir="rtl"] .heading-glow::before {
-  background: linear-gradient(
-    225deg,
-    rgba(82, 26, 41, 0.08) 0%,
-    rgba(82, 26, 41, 0.03) 30%,
-    transparent 65%
-  );
-}
-
-html[dir="rtl"] .heading-glow::before {
-  background: linear-gradient(
-    225deg,
-    rgba(184, 137, 74, 0.08) 0%,
-    rgba(184, 137, 74, 0.03) 30%,
-    transparent 65%
+    rgba(110, 38, 57, 0.15) 0%,
+    rgba(110, 38, 57, 0.07) 35%,
+    transparent 75%
   );
 }
 
