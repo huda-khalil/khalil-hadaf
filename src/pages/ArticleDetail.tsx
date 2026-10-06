@@ -93,7 +93,7 @@ export default function ArticleDetail() {
           {t("article_detail.back")}
         </ArrowLink>
 
-        <h1 className="mt-6 font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
+        <h1 className="heading-glow mt-6 font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
           {primary}
         </h1>
 

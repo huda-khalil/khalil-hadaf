@@ -19,7 +19,7 @@ export default function PageShell({
   return (
     <div className="max-w-6xl mx-auto px-6 pt-32 md:pt-40 pb-24">
       <header className="mb-16">
-        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
+        <h1 className="heading-glow font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
           {title}
         </h1>
 
