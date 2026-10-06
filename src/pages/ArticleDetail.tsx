@@ -10,6 +10,7 @@ import ReadingProgress from "../components/sections/ReadingProgress";
 import CommentForm from "../components/sections/CommentForm";
 import CommentList from "../components/sections/CommentList";
 import { ArrowLink } from "../components/ui/ArrowLink";
+import Loading from "../components/ui/Loading";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -49,7 +50,7 @@ export default function ArticleDetail() {
   if (isLoading) {
     return (
       <div className="max-w-4xl mx-auto px-6 pt-32 md:pt-40 pb-24">
-        <p className="text-muted">{t("common.loading")}</p>
+        <Loading />
       </div>
     );
   }

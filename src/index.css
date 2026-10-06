@@ -252,3 +252,21 @@ html[dir="rtl"] .bg-well .heading-glow::before {
   text-decoration: none;
   margin-inline-start: 0.25em;
 }
+
+/* Mobile-specific hero image crops */
+@media (max-width: 767px) {
+  [data-hero="hero-4"] {
+    object-position: center 15% !important;
+  }
+}
+@media (max-width: 767px) {
+  [data-hero="hero-2"] {
+    object-position: center 40% !important;
+  }
+  [data-hero="hero-4"] {
+    object-position: center 15% !important;
+  }
+  [data-hero="hero-6"] {
+    object-position: center 35% !important;
+  }
+}

@@ -12,7 +12,7 @@ type HeroImage = {
 const HERO_IMAGES: HeroImage[] = [
   { path: "hero/hero-1.jpg" },
   { path: "hero/hero-2.jpg", position: "center 45%" },
-  { path: "hero/hero-4.jpg", position: "center 80%" },
+  { path: "hero/hero-4.jpg", position: "center 0%" },
   { path: "hero/hero-5.jpg", fit: "contain", blurBackdrop: true },
   { path: "hero/hero-6.jpg", position: "center 50%" },
   { path: "hero/hero-7.jpg", position: "center 80%" },
@@ -59,6 +59,7 @@ export default function HeroCrossfade() {
                   src={url}
                   alt=""
                   aria-hidden
+                  data-hero={img.path.split("/").pop()?.replace(".jpg", "")}
                   className="absolute inset-0 w-full h-full object-cover scale-110 blur-3xl opacity-70"
                 />
               )}
