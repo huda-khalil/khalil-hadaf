@@ -81,9 +81,11 @@ export default function BookDetail() {
           {t("book_detail.back")}
         </ArrowLink>
 
-        <h1 className="heading-glow block mt-6 font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
-          {primary}
-        </h1>
+        <div className="mt-6">
+          <h1 className="heading-glow font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
+            {primary}
+          </h1>
+        </div>
 
         {secondary && (
           <p
