@@ -4,8 +4,6 @@ import { useBooks } from "../hooks/useBooks";
 import { useUIStore } from "../stores/uiStore";
 import { getTitles } from "../lib/title";
 import { ArrowLink } from "../components/ui/ArrowLink";
-import MoreBooks from "../components/sections/MoreBooks";
-import Loading from "../components/ui/Loading";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -16,6 +14,14 @@ const LANG_LABEL: Record<string, string> = {
   en: "English",
   "fa-ar": "Persian & Arabic",
   other: "Other",
+};
+
+const LANG_LABEL_FA: Record<string, string> = {
+  fa: "فارسی",
+  ar: "عربی",
+  en: "انگلیسی",
+  "fa-ar": "فارسی و عربی",
+  other: "سایر",
 };
 
 export default function BookDetail() {
@@ -32,7 +38,7 @@ export default function BookDetail() {
   if (isLoading) {
     return (
       <div className="max-w-6xl mx-auto px-6 pt-32 md:pt-40 pb-24">
-        <Loading />
+        <p className="text-muted">{t("common.loading")}</p>
       </div>
     );
   }
@@ -41,16 +47,16 @@ export default function BookDetail() {
     return (
       <div className="max-w-6xl mx-auto px-6 pt-32 md:pt-40 pb-24">
         <h1 className="font-serif text-5xl md:text-6xl font-light tracking-tight">
-          Not found
+          {t("book_detail.not_found")}
         </h1>
-        <p className="mt-4 text-muted">This book doesn't exist.</p>
+        <p className="mt-4 text-muted">{t("book_detail.not_found_text")}</p>
         <ArrowLink
           to="/books"
           direction="back"
           variant="muted"
-          className="text-xs uppercase tracking-[0.2em]"
+          className="mt-6 text-xs uppercase tracking-[0.2em]"
         >
-          {t("nav.books")}
+          {t("book_detail.back")}
         </ArrowLink>
       </div>
     );
@@ -60,9 +66,10 @@ export default function BookDetail() {
     ? `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${book.cover_path}`
     : null;
 
+  const langLabelMap = lang === "fa" ? LANG_LABEL_FA : LANG_LABEL;
+
   return (
     <div className="max-w-6xl mx-auto px-6 pt-32 md:pt-40 pb-24">
-      {/* Header */}
       <header className="mb-16">
         <ArrowLink
           to="/books"
@@ -70,7 +77,7 @@ export default function BookDetail() {
           variant="muted"
           className="text-xs uppercase tracking-[0.2em]"
         >
-          {t("nav.books")}
+          {t("book_detail.back")}
         </ArrowLink>
 
         <h1 className="mt-6 font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
@@ -110,31 +117,25 @@ export default function BookDetail() {
           <div className="mt-6 space-y-3">
             {book.buy_url && (
               <ArrowLink href={book.buy_url} variant="primary">
-                Buy
+                {t("book_detail.buy")}
               </ArrowLink>
             )}
 
             {book.pdf_path && (
-              <div className="flex items-center gap-8 text-sm">
-                <a
+              <div className="flex items-center gap-4 text-sm tracking-wide">
+                <ArrowLink
                   href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${book.pdf_path}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-ink py-2 transition-colors"
+                  variant="primary"
                 >
-                  <span className="relative z-10">Read</span>
-                  <span className="absolute bottom-1.5 inset-x-0 h-px bg-ink/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
-                  <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
-                </a>
-
+                  {t("book_detail.read_pdf")}
+                </ArrowLink>
+                <span className="text-hairline">·</span>
                 <a
                   href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${book.pdf_path}`}
                   download
-                  className="group/btn relative inline-block uppercase tracking-[0.2em] text-xs text-muted py-2 transition-colors hover:text-ink"
+                  className="text-muted hover:text-burgundy transition-colors"
                 >
-                  <span className="relative z-10">Download</span>
-                  <span className="absolute bottom-1.5 inset-x-0 h-px bg-muted/40 transition-all duration-300 group-hover/btn:h-[2px] group-hover/btn:bg-ink" />
-                  <span className="absolute bottom-1.5 inset-x-0 h-0 bg-brass/25 transition-all duration-300 group-hover/btn:h-6 group-hover/btn:bottom-1.5" />
+                  {t("book_detail.download")}
                 </a>
               </div>
             )}
@@ -142,11 +143,11 @@ export default function BookDetail() {
         </div>
 
         <div>
-          <dl className="grid grid-cols-[110px_1fr] gap-y-3 text-sm">
+          <dl className="grid grid-cols-[130px_1fr] gap-y-3 text-sm">
             {book.year && (
               <>
                 <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">
-                  Year
+                  {t("book_detail.year")}
                 </dt>
                 <dd>{book.year}</dd>
               </>
@@ -154,7 +155,7 @@ export default function BookDetail() {
             {book.publisher && (
               <>
                 <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">
-                  Publisher
+                  {t("book_detail.publisher")}
                 </dt>
                 <dd>{book.publisher}</dd>
               </>
@@ -162,19 +163,19 @@ export default function BookDetail() {
             {book.language && (
               <>
                 <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">
-                  Language
+                  {t("book_detail.language")}
                 </dt>
-                <dd>{LANG_LABEL[book.language] ?? book.language}</dd>
+                <dd>{langLabelMap[book.language] ?? book.language}</dd>
               </>
             )}
             <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">
-              Category
+              {t("book_detail.category")}
             </dt>
-            <dd className="capitalize">{book.category}</dd>
+            <dd>{t(`category.${book.category}`)}</dd>
             {book.original_author && (
               <>
                 <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">
-                  Original author
+                  {t("book_detail.original_author")}
                 </dt>
                 <dd>{book.original_author}</dd>
               </>
@@ -182,7 +183,7 @@ export default function BookDetail() {
             {book.original_title && (
               <>
                 <dt className="text-muted uppercase tracking-wider text-xs pt-0.5">
-                  Original title
+                  {t("book_detail.original_title")}
                 </dt>
                 <dd>{book.original_title}</dd>
               </>
@@ -196,32 +197,6 @@ export default function BookDetail() {
           )}
         </div>
       </div>
-      {books && books.length > 1 && (
-        <section className="mt-32 pt-16 border-t border-hairline">
-          <div className="mb-10 flex items-end justify-between">
-            <div>
-              <div className="mb-4 flex items-center gap-4">
-                <span className="h-px w-8 bg-brass" />
-                <span className="text-xs uppercase tracking-[0.3em] text-brass">
-                  More from the shelf
-                </span>
-              </div>
-              <h2 className="font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
-                Other books
-              </h2>
-            </div>
-            <ArrowLink
-              to="/books"
-              variant="muted"
-              className="text-xs uppercase tracking-[0.2em] pb-1"
-            >
-              All books
-            </ArrowLink>
-          </div>
-
-          <MoreBooks books={books} excludeId={book.id} />
-        </section>
-      )}
     </div>
   );
 }

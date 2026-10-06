@@ -42,6 +42,49 @@
     "thanks_new": "Thank you. You're subscribed.",
     "thanks_already": "You're already on the list."
   },
+  "book_detail": {
+    "back": "Back to books",
+    "not_found": "Not found",
+    "not_found_text": "This book doesn't exist.",
+    "year": "Year",
+    "publisher": "Publisher",
+    "language": "Language",
+    "category": "Category",
+    "original_author": "Original author",
+    "original_title": "Original title",
+    "buy": "Buy",
+    "read_pdf": "Read PDF",
+    "download": "Download",
+    "full_book": "Full book"
+  },
+  "article_detail": {
+    "back": "Back to articles",
+    "not_found": "Not found",
+    "not_found_text": "This article doesn't exist.",
+    "full_article": "Full article",
+    "full_article_text": "To read the complete article, open or download the PDF below.",
+    "read_full": "Read full article",
+    "download_pdf": "Download PDF",
+    "discussion": "Discussion",
+    "join_in": "Join in"
+  },
+  "category": {
+    "authored": "Authored",
+    "translated": "Translated",
+    "edited": "Edited"
+  },
+  "about_page": {
+    "intro": "Khalil Hadaf is an author, lecturer, and translator working between Arabic and Persian. Over four decades, his writing has traced the movement of ideas across languages."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch",
+    "email_label": "Email",
+    "facebook_label": "Facebook",
+    "phone_label": "Phone",
+    "phone_value": "Available on request",
+    "intro": "For inquiries about his work, translations, or speaking engagements, please reach out directly."
+  },
   "home": {
     "intro_label": "A life in letters",
     "intro_text": "Khalil Hadaf is an author, lecturer, and translator working between Arabic and Persian. Over four decades, his writing has traced the movement of ideas across languages.",

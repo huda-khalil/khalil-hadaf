@@ -49,7 +49,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
             <div className="flex items-end justify-between mb-16">
               <div>
-                <SectionLabel>{t("home.label_archive")}</SectionLabel>
+                <SectionLabel>{t("home.label_book")}</SectionLabel>
                 <h2 className="heading-glow font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
                   {t("home.heading_featured_books")}
                 </h2>
