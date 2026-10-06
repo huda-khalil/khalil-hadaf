@@ -74,7 +74,7 @@ export default function Home() {
               <div>
                 <SectionLabel>{t("home.label_writing")}</SectionLabel>
                 <h2 className="heading-glow font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
-                  {t("home.heading_featured_books")}
+                  {t("home.heading_latest_articles")}
                 </h2>
               </div>
               <ArrowLink to="/articles" variant="muted" className="pb-2">
@@ -133,7 +133,7 @@ export default function Home() {
               <div>
                 <SectionLabel>{t("home.label_media")}</SectionLabel>
                 <h2 className="heading-glow font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
-                  {t("home.heading_featured_books")}
+                  {t("home.heading_selected_videos")}
                 </h2>
               </div>
               <ArrowLink to="/videos" variant="muted" className="pb-2">
