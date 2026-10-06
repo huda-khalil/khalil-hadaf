@@ -15,7 +15,7 @@ function photoUrl(path: string | null) {
 }
 
 export default function AdminTimeline() {
-  const { data: events, isLoading, error } = useAdminTimeline();
+  const { data: events, error } = useAdminTimeline();
   const deleteMutation = useDeleteTimelineEvent();
   const [confirmId, setConfirmId] = useState<string | null>(null);
 

@@ -7,7 +7,7 @@ import {
 import Loading from "../../components/ui/Loading";
 
 export default function AdminArticles() {
-  const { data: articles, isLoading, error } = useAdminArticles();
+  const { data: articles, error } = useAdminArticles();
   const deleteMutation = useDeleteArticle();
   const [confirmId, setConfirmId] = useState<string | null>(null);
 
