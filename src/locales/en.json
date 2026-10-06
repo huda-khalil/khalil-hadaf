@@ -55,7 +55,9 @@
     "buy": "Buy",
     "read_pdf": "Read PDF",
     "download": "Download",
-    "full_book": "Full book"
+    "full_book": "Full book",
+    "more_from_shelf": "More from the shelf",
+    "other_books": "Other books"
   },
   "article_detail": {
     "back": "Back to articles",
