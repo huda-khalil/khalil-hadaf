@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useBooks } from "../hooks/useBooks";
 import { useUIStore } from "../stores/uiStore";
 import { getTitles } from "../lib/title";
+import { ArrowLink } from "../components/ui/ArrowLink";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -41,12 +42,14 @@ export default function BookDetail() {
           Not found
         </h1>
         <p className="mt-4 text-muted">This book doesn't exist.</p>
-        <Link
+        <ArrowLink
           to="/books"
-          className="inline-block mt-6 text-burgundy hover:underline"
+          direction="back"
+          variant="muted"
+          className="text-xs uppercase tracking-[0.2em]"
         >
-          ← Back to books
-        </Link>
+          {t("nav.books")}
+        </ArrowLink>
       </div>
     );
   }
@@ -102,26 +105,19 @@ export default function BookDetail() {
 
           <div className="mt-6 space-y-3">
             {book.buy_url && (
-              <a
-                href={book.buy_url}
-                target="_blank"
-                rel="noreferrer"
-                className="block text-sm tracking-wide text-burgundy hover:underline"
-              >
-                Buy →
-              </a>
+              <ArrowLink href={book.buy_url} variant="primary">
+                Buy
+              </ArrowLink>
             )}
 
             {book.pdf_path && (
               <div className="flex items-center gap-4 text-sm tracking-wide">
-                <a
+                <ArrowLink
                   href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${book.pdf_path}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-burgundy hover:underline"
+                  variant="primary"
                 >
                   Read PDF
-                </a>
+                </ArrowLink>
                 <span className="text-hairline">·</span>
                 <a
                   href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${book.pdf_path}`}

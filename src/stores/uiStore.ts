@@ -26,3 +26,16 @@ export const useUIStore = create<UIState>((set) => ({
   mobileNavOpen: false,
   toggleMobileNav: () => set((s) => ({ mobileNavOpen: !s.mobileNavOpen })),
 }));
+
+// if we want the page to open in english version in new sessions:
+// Change the storage from localStorage to sessionStorage in both files.
+
+// src/stores/uiStore.ts:
+
+// ts
+// window.sessionStorage.getItem("khalil-hadaf-lang")
+// window.sessionStorage.setItem("khalil-hadaf-lang", lang)
+// src/lib/i18n.ts:
+
+// ts
+// window.sessionStorage.getItem("khalil-hadaf-lang")

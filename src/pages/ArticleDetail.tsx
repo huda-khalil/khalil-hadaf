@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,6 +9,7 @@ import { getTitles } from "../lib/title";
 import ReadingProgress from "../components/sections/ReadingProgress";
 import CommentForm from "../components/sections/CommentForm";
 import CommentList from "../components/sections/CommentList";
+import { ArrowLink } from "../components/ui/ArrowLink";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const BUCKET = "media";
@@ -52,12 +53,14 @@ export default function ArticleDetail() {
           Not found
         </h1>
         <p className="mt-4 text-muted">This article doesn't exist.</p>
-        <Link
+        <ArrowLink
           to="/articles"
-          className="inline-block mt-6 text-burgundy hover:underline"
+          direction="back"
+          variant="muted"
+          className="mt-6 text-xs uppercase tracking-[0.2em]"
         >
-          ← Back to articles
-        </Link>
+          {t("nav.articles")}
+        </ArrowLink>
       </div>
     );
   }
@@ -71,12 +74,14 @@ export default function ArticleDetail() {
       <ReadingProgress />
 
       <header className="mb-12">
-        <Link
+        <ArrowLink
           to="/articles"
-          className="text-xs uppercase tracking-[0.2em] text-muted hover:text-burgundy transition-colors"
+          direction="back"
+          variant="muted"
+          className="text-xs uppercase tracking-[0.2em]"
         >
-          ← {t("nav.articles")}
-        </Link>
+          {t("nav.articles")}
+        </ArrowLink>
 
         <h1 className="mt-6 font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
           {primary}
@@ -127,6 +132,34 @@ export default function ArticleDetail() {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {article.body_md}
           </ReactMarkdown>
+        </div>
+      )}
+
+      {article.pdf_path && (
+        <div className="mt-16 pt-10 border-t border-hairline">
+          <div className="text-xs uppercase tracking-[0.3em] text-brass mb-4">
+            Full article
+          </div>
+          <p className="text-ink/80 leading-relaxed max-w-prose mb-6">
+            To read the complete article, open or download the PDF below.
+          </p>
+
+          <div className="flex items-center gap-6 text-sm tracking-wide">
+            <ArrowLink
+              href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${article.pdf_path}`}
+              variant="primary"
+            >
+              Read full article
+            </ArrowLink>
+            <span className="text-hairline">·</span>
+            <a
+              href={`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${article.pdf_path}`}
+              download
+              className="text-muted hover:text-burgundy transition-colors"
+            >
+              Download PDF
+            </a>
+          </div>
         </div>
       )}
 

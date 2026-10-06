@@ -6,6 +6,7 @@ import VideoCarousel from "../components/sections/VideoCarousel";
 import { useBooks } from "../hooks/useBooks";
 import { useArticles } from "../hooks/useArticles";
 import { useVideos } from "../hooks/useVideos";
+import { ArrowLink } from "../components/ui/ArrowLink";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -53,12 +54,9 @@ export default function Home() {
                   {t("home.heading_featured_books")}
                 </h2>
               </div>
-              <Link
-                to="/books"
-                className="text-sm tracking-wide text-muted hover:text-burgundy transition-colors pb-2"
-              >
+              <ArrowLink to="/books" variant="muted" className="pb-2">
                 {t("home.link_all_books")}
-              </Link>
+              </ArrowLink>
             </div>
 
             <div className="bg-well/50 rounded-sm p-8 md:p-12 border border-hairline/60">
@@ -79,12 +77,9 @@ export default function Home() {
                   {t("home.heading_latest_articles")}
                 </h2>
               </div>
-              <Link
-                to="/articles"
-                className="text-sm tracking-wide text-muted hover:text-burgundy transition-colors pb-2"
-              >
+              <ArrowLink to="/articles" variant="muted" className="pb-2">
                 {t("home.link_all_articles")}
-              </Link>
+              </ArrowLink>
             </div>
 
             {/* <div className="divide-y divide-hairline border-t border-b border-hairline"> */}
@@ -141,12 +136,9 @@ export default function Home() {
                   {t("home.heading_selected_videos")}
                 </h2>
               </div>
-              <Link
-                to="/videos"
-                className="text-sm tracking-wide text-muted hover:text-burgundy transition-colors pb-2"
-              >
-                {t("home.link_all_videos")} →
-              </Link>
+              <ArrowLink to="/videos" variant="muted" className="pb-2">
+                {t("home.link_all_videos")}
+              </ArrowLink>
             </div>
 
             {/* Video carousel: kept LTR in both languages. The physical layout of
@@ -165,12 +157,13 @@ export default function Home() {
           <p className="font-serif text-3xl md:text-4xl font-light leading-relaxed">
             {t("home.timeline_line")}
           </p>
-          <Link
+          <ArrowLink
             to="/about"
-            className="mt-10 inline-block text-sm tracking-[0.2em] uppercase text-brass hover:text-paper transition-colors"
+            variant="primary"
+            className="mt-10 text-xs uppercase tracking-[0.2em] text-brass hover:text-paper"
           >
-            {t("home.link_timeline")} →
-          </Link>
+            {t("home.link_timeline")}
+          </ArrowLink>
         </div>
       </section>
     </>
