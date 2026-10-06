@@ -28,6 +28,7 @@ import AdminArticleForm from "./pages/admin/AdminArticleForm";
 import ScrollToTop from "./components/ScrollToTop";
 import AdminTimelineForm from "./pages/admin/AdminTimelineForm";
 import { useScrollRestoration } from "./hooks/useScrollRestoration";
+import AdminSubscribers from "./pages/admin/AdminSubscribers";
 
 export default function App() {
   useAuthBootstrap();
@@ -82,6 +83,7 @@ export default function App() {
           <Route path="/translations" element={<Translations />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="subscribers" element={<AdminSubscribers />} />
         </Routes>
       </main>
       <Footer />

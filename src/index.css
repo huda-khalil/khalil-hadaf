@@ -18,6 +18,7 @@
   --font-serif: "Fraunces", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-persian: "Vazirmatn", Tahoma, sans-serif;
+  --font-arabic-display: "Amiri", "Noto Naskh Arabic", "Vazirmatn", serif;
 
   /* Max width for prose */
   --container-prose: 68ch;
@@ -177,4 +178,52 @@ html[dir="rtl"] body {
   color: var(--color-burgundy);
   text-decoration: none;
   margin-inline-start: 0.25em;
+}
+.heading-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.heading-glow::before {
+  content: "";
+  position: absolute;
+  inset: -12px -24px;
+  background: linear-gradient(
+    135deg,
+    rgba(184, 137, 74, 0.08) 0%,
+    rgba(184, 137, 74, 0.03) 30%,
+    transparent 65%
+  );
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+html[dir="rtl"] .heading-glow::before {
+  background: linear-gradient(
+    225deg,
+    rgba(184, 137, 74, 0.08) 0%,
+    rgba(184, 137, 74, 0.03) 30%,
+    transparent 65%
+  );
+}
+
+html[dir="rtl"] .hero-name {
+  font-family: var(--font-arabic-display);
+}
+.hero-name {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+html[dir="rtl"] .hero-name {
+  font-family: var(--font-arabic-display);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+html[dir="rtl"] .brand-name {
+  font-family: var(--font-arabic-display);
+  letter-spacing: 0;
 }

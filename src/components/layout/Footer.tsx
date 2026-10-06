@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import NewsletterForm from "../sections/NewsletterForm";
 
 const LINKS = [
   { to: "/books", key: "books" },
@@ -43,7 +44,7 @@ export default function Footer() {
           <div className="text-xs uppercase tracking-[0.2em] text-muted mb-4">
             {t("footer.connect")}
           </div>
-          <ul className="space-y-2 text-sm text-ink/80">
+          <ul className="space-y-2 text-sm text-ink/80 mb-8">
             <li>
               <a
                 href="mailto:contact@khalilhadaf.com"
@@ -53,6 +54,11 @@ export default function Footer() {
               </a>
             </li>
           </ul>
+
+          <div className="text-xs uppercase tracking-[0.2em] text-muted mb-3">
+            {t("newsletter.heading")}
+          </div>
+          <NewsletterForm compact />
         </div>
       </div>
 

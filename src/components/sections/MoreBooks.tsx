@@ -42,6 +42,7 @@ export default function MoreBooks({
           <Link
             key={book.id}
             to={`/books/${book.slug}`}
+            title={book.title || book.title_fa || undefined}
             className="block group"
           >
             <div className="aspect-[2/3] bg-hairline overflow-hidden">

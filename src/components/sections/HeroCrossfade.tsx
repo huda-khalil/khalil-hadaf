@@ -81,7 +81,7 @@ export default function HeroCrossfade() {
         style={{ opacity }}
         className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6"
       >
-        <h1 className="font-serif text-paper text-5xl md:text-7xl lg:text-8xl font-light tracking-tight">
+        <h1 className="hero-name text-paper text-6xl md:text-7xl lg:text-8xl leading-tight">
           {t("hero.name")}
         </h1>
 

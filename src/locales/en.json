@@ -31,6 +31,17 @@
     "note": "Comments appear after approval. Your email is never published.",
     "error_generic": "Could not submit. Try again later."
   },
+  "newsletter": {
+    "heading": "Stay in touch",
+    "subheading": "Get notified when new writing is published.",
+    "name": "Name",
+    "optional": "(optional)",
+    "email": "Email",
+    "email_placeholder": "your@email.com",
+    "subscribe": "Subscribe",
+    "thanks_new": "Thank you. You're subscribed.",
+    "thanks_already": "You're already on the list."
+  },
   "home": {
     "intro_label": "A life in letters",
     "intro_text": "Khalil Hadaf is an author, lecturer, and translator working between Arabic and Persian. Over four decades, his writing has traced the movement of ideas across languages.",

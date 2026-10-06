@@ -50,7 +50,7 @@ export default function Home() {
             <div className="flex items-end justify-between mb-16">
               <div>
                 <SectionLabel>{t("home.label_archive")}</SectionLabel>
-                <h2 className="font-serif text-3xl md:text-4xl font-normal tracking-[0.12em] uppercase">
+                <h2 className="heading-glow font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
                   {t("home.heading_featured_books")}
                 </h2>
               </div>
@@ -73,8 +73,8 @@ export default function Home() {
             <div className="flex items-end justify-between mb-12">
               <div>
                 <SectionLabel>{t("home.label_writing")}</SectionLabel>
-                <h2 className="font-serif text-3xl md:text-4xl font-normal tracking-[0.12em] uppercase">
-                  {t("home.heading_latest_articles")}
+                <h2 className="heading-glow font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
+                  {t("home.heading_featured_books")}
                 </h2>
               </div>
               <ArrowLink to="/articles" variant="muted" className="pb-2">
@@ -132,8 +132,8 @@ export default function Home() {
             <div className="flex items-end justify-between mb-12">
               <div>
                 <SectionLabel>{t("home.label_media")}</SectionLabel>
-                <h2 className="font-serif text-3xl md:text-4xl font-normal tracking-[0.12em] uppercase">
-                  {t("home.heading_selected_videos")}
+                <h2 className="heading-glow font-serif text-2xl md:text-3xl font-light tracking-[0.15em] uppercase">
+                  {t("home.heading_featured_books")}
                 </h2>
               </div>
               <ArrowLink to="/videos" variant="muted" className="pb-2">

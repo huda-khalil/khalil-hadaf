@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { to: "/admin/videos", label: "Videos" },
   { to: "/admin/timeline", label: "Timeline" },
   { to: "/admin/comments", label: "Comments" },
+  { to: "/admin/subscribers", label: "Subscribers" },
   { to: "/admin/pages", label: "Pages" },
   { to: "/admin/settings", label: "Settings" },
 ];
