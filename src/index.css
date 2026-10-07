@@ -264,6 +264,6 @@ html[dir="rtl"] .bg-well .heading-glow::before {
 @media (max-width: 767px) {
   [data-hero="hero-4"] {
     object-fit: contain !important;
-    object-position: left !important;
+    object-position: right center !important;
   }
 }
