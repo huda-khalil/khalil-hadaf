@@ -263,6 +263,6 @@ html[dir="rtl"] .bg-well .heading-glow::before {
 } */
 @media (max-width: 767px) {
   [data-hero="hero-4"] {
-    object-position: right !important;
+    object-position: left center !important;
   }
 }

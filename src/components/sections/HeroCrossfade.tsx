@@ -59,13 +59,13 @@ export default function HeroCrossfade() {
                   src={url}
                   alt=""
                   aria-hidden
-                  data-hero={img.path.split("/").pop()?.replace(".jpg", "")}
                   className="absolute inset-0 w-full h-full object-cover scale-110 blur-3xl opacity-70"
                 />
               )}
               <img
                 src={url}
                 alt=""
+                data-hero={img.path.split("/").pop()?.replace(".jpg", "")}
                 className="absolute inset-0 w-full h-full"
                 style={{
                   objectFit: img.fit ?? "cover",
