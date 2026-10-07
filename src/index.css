@@ -255,6 +255,12 @@ html[dir="rtl"] .bg-well .heading-glow::before {
 
 /* Mobile hero crops — keep faces visible */
 /* Mobile-only crop for hero-4 — show the whole photo on phones */
+/* @media (max-width: 767px) {
+  [data-hero="hero-4"] {
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+} */
 @media (max-width: 767px) {
   [data-hero="hero-4"] {
     object-fit: contain !important;
