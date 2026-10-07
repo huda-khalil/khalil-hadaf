@@ -254,9 +254,10 @@ html[dir="rtl"] .bg-well .heading-glow::before {
 }
 
 /* Mobile-specific hero image crops */
+
 @media (max-width: 767px) {
   [data-hero="hero-4"] {
-    object-position: center 15% !important;
+    object-position: center 25% !important;
   }
 }
 @media (max-width: 767px) {

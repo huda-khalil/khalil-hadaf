@@ -12,7 +12,7 @@ type HeroImage = {
 const HERO_IMAGES: HeroImage[] = [
   { path: "hero/hero-1.jpg" },
   { path: "hero/hero-2.jpg", position: "center 45%" },
-  { path: "hero/hero-4.jpg", position: "center 0%" },
+  { path: "hero/hero-4.jpg", position: "center 25%" },
   { path: "hero/hero-5.jpg", fit: "contain", blurBackdrop: true },
   { path: "hero/hero-6.jpg", position: "center 50%" },
   { path: "hero/hero-7.jpg", position: "center 80%" },
