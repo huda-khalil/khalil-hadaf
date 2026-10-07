@@ -256,6 +256,6 @@ html[dir="rtl"] .bg-well .heading-glow::before {
 /* Mobile hero crops — keep faces visible */
 @media (max-width: 767px) {
   [data-hero="hero-4"] {
-    object-position: center 0% !important;
+    object-position: center -20% !important;
   }
 }
