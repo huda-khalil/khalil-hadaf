@@ -31,10 +31,22 @@ export default function HeroCrossfade() {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
   const scale = useTransform(scrollY, [0, 500], [1, 1.05]);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" && window.innerWidth < 768,
+  );
+  const images = isMobile
+    ? HERO_IMAGES.filter((img) => !img.path.includes("hero-4"))
+    : HERO_IMAGES;
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % HERO_IMAGES.length);
+      setIndex((i) => (i + 1) % images.length);
     }, HOLD_MS);
     return () => clearInterval(id);
   }, []);
@@ -42,7 +54,7 @@ export default function HeroCrossfade() {
   return (
     <section className="relative w-full overflow-hidden bg-ink h-[80vh] md:h-[70vh] lg:h-[75vh]">
       <motion.div style={{ opacity, scale }} className="absolute inset-0">
-        {HERO_IMAGES.map((img, i) => {
+        {images.map((img, i) => {
           const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${img.path}`;
           const isActive = i === index;
 
